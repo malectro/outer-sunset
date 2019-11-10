@@ -4,6 +4,8 @@ let s:group_prefix='OuterSunset'
 " set color variables
 " [light, dark]
 let s:colors = #{
+\  fg: ['#e7e7e7', '#bababa', '#9e9e9e'],
+\  bg: ['#222222', '#3f3f3f', '#5b5b5b'],
 \  pink: ['#e5b1c0', '#B68392'],
 \  yellow: ['#FFCE72', '#f2ba63'],
 \  rose: ['#b0a1c8', '#685589'],
@@ -15,9 +17,15 @@ let s:colors = #{
 \ }
 
 " helper functions
-" Arguments name: group name, options...
 function! Hi(name, ...)
+  let histring = ['hi', a:name] + a:000
+  execute join(histring, ' ')
+endfunction
+
+" Arguments name: group name, options...
+function! HiNamespace(name, ...)
   let histring = ['hi', s:group_prefix . '_' . a:name] + a:000
+  " echo join(histring, ' ')
   execute join(histring, ' ')
 endfunction
 
@@ -26,16 +34,24 @@ function! LocalGroup(name)
 endfunction
 
 " create color groups
-for [name, color] in items(s:colors)
-  call Hi(name, 'guifg=' . color[0])
-  for style in ['bold', 'italic']
-    call Hi(name . '_' . style, 'guifg=' . color[0], 'gui=' . style)
+" GroupNamespace_color_style
+"  bold, italic, sign
+for [name, colors] in items(s:colors)
+  let i = 0
+  for color in colors
+    call HiNamespace(name . '_' . i, 'guifg=' . color)
+    for style in ['bold', 'italic']
+      call HiNamespace(name . '_' . i . '_' . style, 'guifg=' . color, 'gui=' . style)
+    endfor
+    call HiNamespace(name . '_' . i . '_sign', 'guifg=' . color, 'guibg=' . s:colors.bg[1], 'gui=inverse,')
+    let i += 1
   endfor
 endfor
 
 " local generalizations
-hi! link OuterSunset_Important OuterSunset_red
-hi! link OuterSunset_Macros OuterSunset_rose
+hi! link OuterSunset_Important OuterSunset_red_0
+hi! link OuterSunset_Macros OuterSunset_rose_0
+hi! link OuterSunset_Value OuterSunset_purple_0
 
 " Generic statement
 hi! link Statement OuterSunset_Important
@@ -53,9 +69,9 @@ hi! link Operator Normal
 hi! link Keyword OuterSunset_Important
 
 " Variable name
-hi! link Identifier OuterSunset_blue
+hi! link Identifier OuterSunset_blue_0
 " Function name
-hi! link Function OuterSunset_green_bold
+hi! link Function OuterSunset_green_0_bold
 
 " Generic preprocessor
 hi! link PreProc OuterSunset_Macros
@@ -69,23 +85,54 @@ hi! link Macro OuterSunset_Macros
 hi! link PreCondit OuterSunset_Macros
 
 " Generic constant
-hi! link Constant OuterSunset_purple
+hi! link Constant OuterSunset_Value
 " Character constant: 'c', '/n'
-hi! link Character OuterSunset_purple
+hi! link Character OuterSunset_Value
 " String constant: "this is a string"
-hi! link String OuterSunset_yellow
+hi! link String OuterSunset_yellow_0
 " Boolean constant: TRUE, false
-hi! link Boolean OuterSunset_purple
+hi! link Boolean OuterSunset_Value
 " Number constant: 234, 0xff
-hi! link Number OuterSunset_purple
+hi! link Number OuterSunset_Value
 " Floating point constant: 2.3e10
-hi! link Float OuterSunset_purple
+hi! link Float OuterSunset_Value
 
 " Generic type
-hi! link Type OuterSunset_yellow
+hi! link Type OuterSunset_yellow_0
 " static, register, volatile, etc
-hi! link StorageClass OuterSunset_orange
+hi! link StorageClass OuterSunset_orange_0
 " struct, union, enum, etc.
-hi! link Structure OuterSunset_green
+hi! link Structure OuterSunset_green_0
 " typedef
-hi! link Typedef OuterSunset_yellow
+hi! link Typedef OuterSunset_yellow_0
+
+
+" ALE
+call Hi('ALEError', 'gui=undercurl,', 'guisp=' . s:colors.red[0])
+call Hi('ALEWarning', 'gui=undercurl,', 'guisp=' . s:colors.yellow[0])
+call Hi('ALEInfo', 'gui=undercurl,', 'guisp=' . s:colors.blue[0])
+
+hi! link ALEErrorSign OuterSunset_red_0_sign
+hi! link ALEWarningSign OuterSunset_yellow_0_sign
+hi! link ALEInfoSign OuterSunset_blue_0_sign
+
+
+" TypeScript
+hi! link typeScriptReserved OuterSunset_rose_0
+hi! link typeScriptLabel OuterSunset_rose_0
+hi! link typeScriptFuncKeyword OuterSunset_rose_0
+hi! link typeScriptIdentifier OuterSunset_orange_0
+hi! link typeScriptBraces OuterSunset_fg_1
+hi! link typeScriptEndColons OutserSunset_fg_1
+hi! link typeScriptDOMObjects OuterSunset_fg_1
+hi! link typeScriptAjaxMethods OuterSunset_fg_1
+hi! link typeScriptLogicSymbols OuterSunset_fg_1
+hi! link typeScriptDocSeeTag Comment
+hi! link typeScriptDocParam Comment
+hi! link typeScriptDocTags vimCommentTitle
+hi! link typeScriptGlobalObjects OuterSunset_fg_1
+hi! link typeScriptParens OuterSunset_fg_2
+hi! link typeScriptOpSymbols OuterSunset_fg_2
+hi! link typeScriptHtmlElemProperties OuterSunset_fg_2
+hi! link typeScriptNull OuterSunset_Value
+hi! link typeScriptInterpolationDelimiter OuterSunset_rose
