@@ -24,6 +24,63 @@ let s:colors = #{
 \  purple: ['#f4b1ff', '#ab4cbb'],
 \ }
 
+if !exists("g:outersunset_termcolors")
+  let g:outersunset_termcolors = 256
+endif
+
+" Not all terminals support italics properly. If yours does, opt-in.
+if !exists("g:outersunset_terminal_italics")
+  let g:outersunset_terminal_italics = 1
+endif
+
+
+" This function is based on one from onedark: https://github.com/joshdick/onedark.vim
+let s:group_colors = {} " Cache of default highlight group settings, for later reference via `onedark#extend_highlight`
+function! s:h(group, style, ...)
+  if (a:0 > 0) " Will be true if we got here from onedark#extend_highlight
+    let s:highlight = s:group_colors[a:group]
+    for style_type in ["fg", "bg", "sp"]
+      if (has_key(a:style, style_type))
+        let l:default_style = (has_key(s:highlight, style_type) ? s:highlight[style_type] : { "cterm16": "NONE", "cterm": "NONE", "gui": "NONE" })
+        let s:highlight[style_type] = extend(l:default_style, a:style[style_type])
+      endif
+    endfor
+    if (has_key(a:style, "gui"))
+      let s:highlight.gui = a:style.gui
+    endif
+  else
+    let s:highlight = a:style
+    let s:group_colors[a:group] = s:highlight " Cache default highlight group settings
+  endif
+
+  if g:outersunset_terminal_italics == 0
+    if has_key(s:highlight, "cterm") && s:highlight["cterm"] == "italic"
+      unlet s:highlight.cterm
+    endif
+    if has_key(s:highlight, "gui") && s:highlight["gui"] == "italic"
+      unlet s:highlight.gui
+    endif
+  endif
+
+  if g:outersunset_termcolors == 16
+    let l:ctermfg = (has_key(s:highlight, "fg") ? s:highlight.fg.cterm16 : "NONE")
+    let l:ctermbg = (has_key(s:highlight, "bg") ? s:highlight.bg.cterm16 : "NONE")
+  else
+    let l:ctermfg = (has_key(s:highlight, "fg") ? s:highlight.fg.cterm : "NONE")
+    let l:ctermbg = (has_key(s:highlight, "bg") ? s:highlight.bg.cterm : "NONE")
+  endif
+
+  execute "highlight" a:group
+    \ "guifg="   (has_key(s:highlight, "fg")    ? s:highlight.fg.gui   : "NONE")
+    \ "guibg="   (has_key(s:highlight, "bg")    ? s:highlight.bg.gui   : "NONE")
+    \ "guisp="   (has_key(s:highlight, "sp")    ? s:highlight.sp.gui   : "NONE")
+    \ "gui="     (has_key(s:highlight, "gui")   ? s:highlight.gui      : "NONE")
+    \ "ctermfg=" . l:ctermfg
+    \ "ctermbg=" . l:ctermbg
+    \ "cterm="   (has_key(s:highlight, "cterm") ? s:highlight.cterm    : "NONE")
+endfunction
+
+
 " helper functions
 function! Hi(name, ...)
   let histring = ['hi', a:name] + a:000
@@ -32,9 +89,7 @@ endfunction
 
 " Arguments name: group name, options...
 function! HiNamespace(name, ...)
-  let histring = ['hi', s:group_prefix . '_' . a:name] + a:000
-  " echo join(histring, ' ')
-  execute join(histring, ' ')
+  call call('s:h', [s:group_prefix . '_' . a:name] + a:000)
 endfunction
 
 function! LocalGroup(name)
@@ -47,11 +102,11 @@ endfunction
 for [name, colors] in items(s:colors)
   let i = 0
   for color in colors
-    call HiNamespace(name . '_' . i, 'guifg=' . color)
+    call HiNamespace(name . '_' . i, {'fg': color})
     for style in ['bold', 'italic']
-      call HiNamespace(name . '_' . i . '_' . style, 'guifg=' . color, 'gui=' . style)
+      call HiNamespace(name . '_' . i . '_' . style, {'fg': color, 'gui': style})
     endfor
-    call HiNamespace(name . '_' . i . '_sign', 'guifg=' . color, 'guibg=' . s:colors.bg[1], 'gui=inverse,')
+    call HiNamespace(name . '_' . i . '_sign', {'fg' : color, 'bg' : s:colors.bg[1], 'gui': 'inverse'})
     let i += 1
   endfor
 endfor
