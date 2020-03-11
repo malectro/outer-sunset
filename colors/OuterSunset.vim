@@ -1,4 +1,12 @@
-let g:colors_name='outer sunset'
+highlight clear
+
+if exists("syntax_on")
+  syntax reset
+endif
+
+set t_Co=256
+
+let g:colors_name='OuterSunset'
 let s:group_prefix='OuterSunset'
 
 " set color variables
@@ -50,9 +58,33 @@ endfor
 
 " local generalizations
 hi! link OuterSunset_Important OuterSunset_red_0
-hi! link OuterSunset_Macros OuterSunset_rose_0
+hi! link OuterSunset_Macro OuterSunset_rose_0
 hi! link OuterSunset_Value OuterSunset_purple_0
 
+" UI
+" Cursor
+call Hi('CursorLine', 'guibg=' . s:colors.bg[1])
+hi! link CursorColumn CursorLine
+call Hi('Cursor', 'guifg=NONE', 'guibg=NONE', 'gui=inverse')
+hi! link vCursor Cursor
+hi! link iCursor Cursor
+hi! link lCursor Cursor
+" Gutter and Line Numbers
+hi! link LineNr OuterSunset_fg_2
+call Hi('CursorLineNr', 'guifg=' . s:colors.yellow[0], 'guibg=' . s:colors.bg[1])
+" Folding
+call Hi('Folded', 'guifg=' . s:colors.fg[1], 'guibg=' . s:colors.bg[1], 'gui=italic')
+" Matched Paren
+call Hi('MatchParen', 'guifg=NONE', 'guibg=' . s:colors.bg[2], 'gui=bold')
+" Status Line
+call Hi('StatusLine',   'guifg=' . s:colors.bg[0], 'guibg=' . s:colors.fg[0], 'gui=inverse')
+call Hi('StatusLineNC', 'guifg=' . s:colors.bg[0], 'guibg=' . s:colors.fg[2], 'gui=inverse')
+
+
+" Comment
+hi! link Comment OuterSunset_fg_2
+
+" KEYWORDS
 " Generic statement
 hi! link Statement OuterSunset_Important
 " if, then, else, endif, swicth, etc.
@@ -68,22 +100,25 @@ hi! link Operator Normal
 " Any other keyword
 hi! link Keyword OuterSunset_Important
 
+" NAMES
 " Variable name
 hi! link Identifier OuterSunset_blue_0
 " Function name
 hi! link Function OuterSunset_green_0_bold
 
+" PREPROCESSOR
 " Generic preprocessor
-hi! link PreProc OuterSunset_Macros
+hi! link PreProc OuterSunset_Macro
 " Preprocessor #include
-hi! link Include OuterSunset_Macros
+hi! link Include OuterSunset_Macro
 " Preprocessor #define
-hi! link Define OuterSunset_Macros
+hi! link Define OuterSunset_Macro
 " Same as Define
-hi! link Macro OuterSunset_Macros
+hi! link Macro OuterSunset_Macro
 " Preprocessor #if, #else, #endif, etc.
-hi! link PreCondit OuterSunset_Macros
+hi! link PreCondit OuterSunset_Macro
 
+" LITERALS
 " Generic constant
 hi! link Constant OuterSunset_Value
 " Character constant: 'c', '/n'
@@ -120,7 +155,7 @@ hi! link ALEInfoSign OuterSunset_blue_0_sign
 " TypeScript
 hi! link typeScriptReserved OuterSunset_rose_0
 hi! link typeScriptLabel OuterSunset_rose_0
-hi! link typeScriptFuncKeyword OuterSunset_rose_0
+hi! link typeScriptFuncKeyword OuterSunset_green_0
 hi! link typeScriptIdentifier OuterSunset_orange_0
 hi! link typeScriptBraces OuterSunset_fg_1
 hi! link typeScriptEndColons OutserSunset_fg_1
@@ -136,3 +171,4 @@ hi! link typeScriptOpSymbols OuterSunset_fg_2
 hi! link typeScriptHtmlElemProperties OuterSunset_fg_2
 hi! link typeScriptNull OuterSunset_Value
 hi! link typeScriptInterpolationDelimiter OuterSunset_rose
+
