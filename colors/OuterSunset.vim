@@ -141,6 +141,7 @@ hi! link Exception OuterSunset_Important
 hi! link Operator Normal
 " Any other keyword
 hi! link Keyword OuterSunset_Important
+hi! link Special OuterSunset_Important
 
 " NAMES
 " Variable name
@@ -193,6 +194,14 @@ hi! link ALEErrorSign OuterSunset_red_0_sign
 hi! link ALEWarningSign OuterSunset_yellow_0_sign
 hi! link ALEInfoSign OuterSunset_blue_0_sign
 
+" JavaScript
+hi! link jsBraces OuterSunset_fg_1
+hi! link jsParens OuterSunset_fg_2
+hi! link jsFunctionKey OuterSunset_green_0
+hi! link jsFuncParens OuterSunset_green_0
+hi! link jsFuncBraces OuterSunset_green_0
+" hi! link jsFuncCall OuterSunset_green_0
+" hi! link jsObjectBraces OuterSunset_orange_0
 
 " TypeScript
 hi! link typeScriptReserved OuterSunset_rose_0
