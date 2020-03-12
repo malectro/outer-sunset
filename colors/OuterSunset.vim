@@ -11,18 +11,9 @@ let s:group_prefix='OuterSunset'
 
 " set color variables
 " [light, dark]
-let s:colors = #{
-\  fg: ['#e7e7e7', '#bababa', '#9e9e9e'],
-\  bg: ['#222222', '#3f3f3f', '#5b5b5b'],
-\  pink: ['#e5b1c0', '#B68392'],
-\  yellow: ['#FFCE72', '#f2ba63'],
-\  rose: ['#b0a1c8', '#685589'],
-\  orange: ['#ffa372', '#e1674a'],
-\  red: ['#ff7272', '#c85151'],
-\  green: ['#93e89b', '#65b26d'],
-\  blue: ['#72f7ff', '#27c1c1'],
-\  purple: ['#f4b1ff', '#ab4cbb'],
-\ }
+let s:colors = outersunset#GetColors()
+
+let s:something = s:colors.fg[1].gui
 
 if !exists("g:outersunset_termcolors")
   let g:outersunset_termcolors = 256
@@ -62,13 +53,8 @@ function! s:h(group, style, ...)
     endif
   endif
 
-  if g:outersunset_termcolors == 16
-    let l:ctermfg = (has_key(s:highlight, "fg") ? s:highlight.fg.cterm16 : "NONE")
-    let l:ctermbg = (has_key(s:highlight, "bg") ? s:highlight.bg.cterm16 : "NONE")
-  else
-    let l:ctermfg = (has_key(s:highlight, "fg") ? s:highlight.fg.cterm : "NONE")
-    let l:ctermbg = (has_key(s:highlight, "bg") ? s:highlight.bg.cterm : "NONE")
-  endif
+  let l:ctermfg = (has_key(s:highlight, "fg") ? s:highlight.fg.cterm.ctermfg : "NONE")
+  let l:ctermbg = (has_key(s:highlight, "bg") ? s:highlight.bg.cterm.ctermfg : "NONE")
 
   execute "highlight" a:group
     \ "guifg="   (has_key(s:highlight, "fg")    ? s:highlight.fg.gui   : "NONE")
@@ -102,6 +88,7 @@ endfunction
 for [name, colors] in items(s:colors)
   let i = 0
   for color in colors
+    let something = color.gui
     call HiNamespace(name . '_' . i, {'fg': color})
     for style in ['bold', 'italic']
       call HiNamespace(name . '_' . i . '_' . style, {'fg': color, 'gui': style})
@@ -118,22 +105,22 @@ hi! link OuterSunset_Value OuterSunset_purple_0
 
 " UI
 " Cursor
-call Hi('CursorLine', 'guibg=' . s:colors.bg[1])
+"call Hi('CursorLine', 'guibg=' . s:colors.bg[1])
 hi! link CursorColumn CursorLine
-call Hi('Cursor', 'guifg=NONE', 'guibg=NONE', 'gui=inverse')
+"call Hi('Cursor', 'guifg=NONE', 'guibg=NONE', 'gui=inverse')
 hi! link vCursor Cursor
 hi! link iCursor Cursor
 hi! link lCursor Cursor
 " Gutter and Line Numbers
 hi! link LineNr OuterSunset_fg_2
-call Hi('CursorLineNr', 'guifg=' . s:colors.yellow[0], 'guibg=' . s:colors.bg[1])
+"call Hi('CursorLineNr', 'guifg=' . s:colors.yellow[0], 'guibg=' . s:colors.bg[1])
 " Folding
-call Hi('Folded', 'guifg=' . s:colors.fg[1], 'guibg=' . s:colors.bg[1], 'gui=italic')
+"call Hi('Folded', 'guifg=' . s:colors.fg[1], 'guibg=' . s:colors.bg[1], 'gui=italic')
 " Matched Paren
-call Hi('MatchParen', 'guifg=NONE', 'guibg=' . s:colors.bg[2], 'gui=bold')
+"call Hi('MatchParen', 'guifg=NONE', 'guibg=' . s:colors.bg[2], 'gui=bold')
 " Status Line
-call Hi('StatusLine',   'guifg=' . s:colors.bg[0], 'guibg=' . s:colors.fg[0], 'gui=inverse')
-call Hi('StatusLineNC', 'guifg=' . s:colors.bg[0], 'guibg=' . s:colors.fg[2], 'gui=inverse')
+"call Hi('StatusLine',   'guifg=' . s:colors.bg[0], 'guibg=' . s:colors.fg[0], 'gui=inverse')
+"call Hi('StatusLineNC', 'guifg=' . s:colors.bg[0], 'guibg=' . s:colors.fg[2], 'gui=inverse')
 
 
 " Comment
@@ -198,9 +185,9 @@ hi! link Typedef OuterSunset_yellow_0
 
 
 " ALE
-call Hi('ALEError', 'gui=undercurl,', 'guisp=' . s:colors.red[0])
-call Hi('ALEWarning', 'gui=undercurl,', 'guisp=' . s:colors.yellow[0])
-call Hi('ALEInfo', 'gui=undercurl,', 'guisp=' . s:colors.blue[0])
+"call Hi('ALEError', 'gui=undercurl,', 'guisp=' . s:colors.red[0])
+"call Hi('ALEWarning', 'gui=undercurl,', 'guisp=' . s:colors.yellow[0])
+"call Hi('ALEInfo', 'gui=undercurl,', 'guisp=' . s:colors.blue[0])
 
 hi! link ALEErrorSign OuterSunset_red_0_sign
 hi! link ALEWarningSign OuterSunset_yellow_0_sign

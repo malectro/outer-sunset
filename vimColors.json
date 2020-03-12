@@ -1,0 +1,308 @@
+{
+  "fg": [
+    {
+      "gui": "#e7e7e7",
+      "cterm": {
+        "name": "x254_Grey89",
+        "ctermfg": 254,
+        "guifg": "#e4e4e4",
+        "rgb": [
+          228,
+          228,
+          228
+        ]
+      }
+    },
+    {
+      "gui": "#bababa",
+      "cterm": {
+        "name": "x250_Grey74",
+        "ctermfg": 250,
+        "guifg": "#bcbcbc",
+        "rgb": [
+          188,
+          188,
+          188
+        ]
+      }
+    },
+    {
+      "gui": "#9e9e9e",
+      "cterm": {
+        "name": "x247_Grey62",
+        "ctermfg": 247,
+        "guifg": "#9e9e9e",
+        "rgb": [
+          158,
+          158,
+          158
+        ]
+      }
+    }
+  ],
+  "bg": [
+    {
+      "gui": "#222222",
+      "cterm": {
+        "name": "x235_Grey15",
+        "ctermfg": 235,
+        "guifg": "#262626",
+        "rgb": [
+          38,
+          38,
+          38
+        ]
+      }
+    },
+    {
+      "gui": "#3f3f3f",
+      "cterm": {
+        "name": "x237_Grey23",
+        "ctermfg": 237,
+        "guifg": "#3a3a3a",
+        "rgb": [
+          58,
+          58,
+          58
+        ]
+      }
+    },
+    {
+      "gui": "#5b5b5b",
+      "cterm": {
+        "name": "x240_Grey35",
+        "ctermfg": 240,
+        "guifg": "#585858",
+        "rgb": [
+          88,
+          88,
+          88
+        ]
+      }
+    }
+  ],
+  "pink": [
+    {
+      "gui": "#e5b1c0",
+      "cterm": {
+        "name": "x181_MistyRose3",
+        "ctermfg": 181,
+        "guifg": "#d7afaf",
+        "rgb": [
+          215,
+          175,
+          175
+        ]
+      }
+    },
+    {
+      "gui": "#B68392",
+      "cterm": {
+        "name": "x138_RosyBrown",
+        "ctermfg": 138,
+        "guifg": "#af8787",
+        "rgb": [
+          175,
+          135,
+          135
+        ]
+      }
+    }
+  ],
+  "yellow": [
+    {
+      "gui": "#FFCE72",
+      "cterm": {
+        "name": "x221_LightGoldenrod2",
+        "ctermfg": 221,
+        "guifg": "#ffd75f",
+        "rgb": [
+          255,
+          215,
+          95
+        ]
+      }
+    },
+    {
+      "gui": "#f2ba63",
+      "cterm": {
+        "name": "x215_SandyBrown",
+        "ctermfg": 215,
+        "guifg": "#ffaf5f",
+        "rgb": [
+          255,
+          175,
+          95
+        ]
+      }
+    }
+  ],
+  "rose": [
+    {
+      "gui": "#b0a1c8",
+      "cterm": {
+        "name": "x146_LightSteelBlue3",
+        "ctermfg": 146,
+        "guifg": "#afafd7",
+        "rgb": [
+          175,
+          175,
+          215
+        ]
+      }
+    },
+    {
+      "gui": "#685589",
+      "cterm": {
+        "name": "x060_MediumPurple4",
+        "ctermfg": 60,
+        "guifg": "#5f5f87",
+        "rgb": [
+          95,
+          95,
+          135
+        ]
+      }
+    }
+  ],
+  "orange": [
+    {
+      "gui": "#ffa372",
+      "cterm": {
+        "name": "x215_SandyBrown",
+        "ctermfg": 215,
+        "guifg": "#ffaf5f",
+        "rgb": [
+          255,
+          175,
+          95
+        ]
+      }
+    },
+    {
+      "gui": "#e1674a",
+      "cterm": {
+        "name": "x167_IndianRed",
+        "ctermfg": 167,
+        "guifg": "#d75f5f",
+        "rgb": [
+          215,
+          95,
+          95
+        ]
+      }
+    }
+  ],
+  "red": [
+    {
+      "gui": "#ff7272",
+      "cterm": {
+        "name": "x203_IndianRed1",
+        "ctermfg": 203,
+        "guifg": "#ff5f5f",
+        "rgb": [
+          255,
+          95,
+          95
+        ]
+      }
+    },
+    {
+      "gui": "#c85151",
+      "cterm": {
+        "name": "x167_IndianRed",
+        "ctermfg": 167,
+        "guifg": "#d75f5f",
+        "rgb": [
+          215,
+          95,
+          95
+        ]
+      }
+    }
+  ],
+  "green": [
+    {
+      "gui": "#93e89b",
+      "cterm": {
+        "name": "x114_PaleGreen3",
+        "ctermfg": 114,
+        "guifg": "#87d787",
+        "rgb": [
+          135,
+          215,
+          135
+        ]
+      }
+    },
+    {
+      "gui": "#65b26d",
+      "cterm": {
+        "name": "x071_DarkSeaGreen4",
+        "ctermfg": 71,
+        "guifg": "#5faf5f",
+        "rgb": [
+          95,
+          175,
+          95
+        ]
+      }
+    }
+  ],
+  "blue": [
+    {
+      "gui": "#72f7ff",
+      "cterm": {
+        "name": "x087_DarkSlateGray2",
+        "ctermfg": 87,
+        "guifg": "#5fffff",
+        "rgb": [
+          95,
+          255,
+          255
+        ]
+      }
+    },
+    {
+      "gui": "#27c1c1",
+      "cterm": {
+        "name": "x037_LightSeaGreen",
+        "ctermfg": 37,
+        "guifg": "#00afaf",
+        "rgb": [
+          0,
+          175,
+          175
+        ]
+      }
+    }
+  ],
+  "purple": [
+    {
+      "gui": "#f4b1ff",
+      "cterm": {
+        "name": "x219_Plum1",
+        "ctermfg": 219,
+        "guifg": "#ffafff",
+        "rgb": [
+          255,
+          175,
+          255
+        ]
+      }
+    },
+    {
+      "gui": "#ab4cbb",
+      "cterm": {
+        "name": "x133_MediumOrchid3",
+        "ctermfg": 133,
+        "guifg": "#af5faf",
+        "rgb": [
+          175,
+          95,
+          175
+        ]
+      }
+    }
+  ]
+}
