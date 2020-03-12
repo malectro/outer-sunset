@@ -105,22 +105,22 @@ hi! link OuterSunset_Value OuterSunset_purple_0
 
 " UI
 " Cursor
-"call Hi('CursorLine', 'guibg=' . s:colors.bg[1])
+call s:h('CursorLine', {'bg' : s:colors.bg[1]})
 hi! link CursorColumn CursorLine
-"call Hi('Cursor', 'guifg=NONE', 'guibg=NONE', 'gui=inverse')
+call s:h('Cursor', {'gui': 'inverse'})
 hi! link vCursor Cursor
 hi! link iCursor Cursor
 hi! link lCursor Cursor
 " Gutter and Line Numbers
 hi! link LineNr OuterSunset_fg_2
-"call Hi('CursorLineNr', 'guifg=' . s:colors.yellow[0], 'guibg=' . s:colors.bg[1])
+call s:h('CursorLineNr', {'fg': s:colors.yellow[0], 'bg': s:colors.bg[1]})
 " Folding
-"call Hi('Folded', 'guifg=' . s:colors.fg[1], 'guibg=' . s:colors.bg[1], 'gui=italic')
+call s:h('Folded', {'fg': s:colors.fg[1], 'bg': s:colors.bg[1], 'gui': 'italic'})
 " Matched Paren
-"call Hi('MatchParen', 'guifg=NONE', 'guibg=' . s:colors.bg[2], 'gui=bold')
+call s:h('MatchParen', {'bg': s:colors.bg[2], 'gui': 'bold'})
 " Status Line
-"call Hi('StatusLine',   'guifg=' . s:colors.bg[0], 'guibg=' . s:colors.fg[0], 'gui=inverse')
-"call Hi('StatusLineNC', 'guifg=' . s:colors.bg[0], 'guibg=' . s:colors.fg[2], 'gui=inverse')
+call s:h('StatusLine', {'fg': s:colors.bg[0], 'bg': s:colors.fg[0], 'gui': 'inverse'})
+call s:h('StatusLineNC', {'fg': s:colors.bg[0], 'bg': s:colors.fg[2], 'gui': 'inverse'})
 
 
 " Comment
@@ -185,9 +185,9 @@ hi! link Typedef OuterSunset_yellow_0
 
 
 " ALE
-"call Hi('ALEError', 'gui=undercurl,', 'guisp=' . s:colors.red[0])
-"call Hi('ALEWarning', 'gui=undercurl,', 'guisp=' . s:colors.yellow[0])
-"call Hi('ALEInfo', 'gui=undercurl,', 'guisp=' . s:colors.blue[0])
+call s:h('ALEError', {'gui': 'undercurl', 'sp': s:colors.red[0]})
+call s:h('ALEWarning', {'gui': 'undercurl', 'sp': s:colors.yellow[0]})
+call s:h('ALEInfo', {'gui': 'undercurl', 'sp': s:colors.blue[0]})
 
 hi! link ALEErrorSign OuterSunset_red_0_sign
 hi! link ALEWarningSign OuterSunset_yellow_0_sign
