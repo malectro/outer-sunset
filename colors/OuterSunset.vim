@@ -69,7 +69,7 @@ endfunction
 
 " helper functions
 function! Hi(name, ...)
-  let histring = ['hi', a:name] + a:000
+  let histring = ['hi!', a:name] + a:000
   execute join(histring, ' ')
 endfunction
 
@@ -121,7 +121,10 @@ call s:h('MatchParen', {'bg': s:colors.bg[2], 'gui': 'bold'})
 " Status Line
 call s:h('StatusLine', {'fg': s:colors.bg[0], 'bg': s:colors.fg[0], 'gui': 'inverse'})
 call s:h('StatusLineNC', {'fg': s:colors.bg[0], 'bg': s:colors.fg[2], 'gui': 'inverse'})
-
+" Background
+call s:h('Normal', {'fg': s:colors.fg[0], 'bg': s:colors.bg[0]})
+hi! link NonText OuterSunset_bg_0
+hi! link SpecialKey OuterSunset_bg_0
 
 " Comment
 hi! link Comment OuterSunset_fg_2
