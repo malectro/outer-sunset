@@ -103,6 +103,9 @@ hi! link OuterSunset_Important OuterSunset_red_0
 hi! link OuterSunset_Macro OuterSunset_rose_0
 hi! link OuterSunset_Value OuterSunset_purple_0
 
+" Normal
+call s:h('Normal', {'fg' : s:colors.fg[0], 'bg' : s:colors.bg[0]})
+
 " UI
 " Cursor
 call s:h('CursorLine', {'bg' : s:colors.bg[1]})
