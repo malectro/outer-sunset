@@ -103,10 +103,11 @@ hi! link OuterSunset_Important OuterSunset_red_0
 hi! link OuterSunset_Macro OuterSunset_rose_0
 hi! link OuterSunset_Value OuterSunset_purple_0
 
-" Normal
-call s:h('Normal', {'fg' : s:colors.fg[0], 'bg' : s:colors.bg[0]})
-
 " UI
+" Background
+call s:h('Normal', {'fg': s:colors.fg[0], 'bg': s:colors.bg[0]})
+hi! link NonText OuterSunset_bg_0
+hi! link SpecialKey OuterSunset_bg_0
 " Cursor
 call s:h('CursorLine', {'bg' : s:colors.bg[1]})
 hi! link CursorColumn CursorLine
@@ -117,6 +118,11 @@ hi! link lCursor Cursor
 " Gutter and Line Numbers
 hi! link LineNr OuterSunset_fg_2
 call s:h('CursorLineNr', {'fg': s:colors.yellow[0], 'bg': s:colors.bg[1]})
+" Tab Bar
+call s:h('TabLineFill', {'bg': s:colors.fg[1]})
+call s:h('TabLine', {'bg': s:colors.bg[2]})
+hi! link TabLineSel Normal
+hi! link Title OuterSunset_purple_0
 " Folding
 call s:h('Folded', {'fg': s:colors.fg[1], 'bg': s:colors.bg[1], 'gui': 'italic'})
 " Matched Paren
@@ -124,10 +130,8 @@ call s:h('MatchParen', {'bg': s:colors.bg[2], 'gui': 'bold'})
 " Status Line
 call s:h('StatusLine', {'fg': s:colors.bg[0], 'bg': s:colors.fg[0], 'gui': 'inverse'})
 call s:h('StatusLineNC', {'fg': s:colors.bg[0], 'bg': s:colors.fg[2], 'gui': 'inverse'})
-" Background
-call s:h('Normal', {'fg': s:colors.fg[0], 'bg': s:colors.bg[0]})
-hi! link NonText OuterSunset_bg_0
-hi! link SpecialKey OuterSunset_bg_0
+" Search
+hi! link Search OuterSunset_yellow_1_sign
 
 " Comment
 hi! link Comment OuterSunset_fg_2
@@ -206,6 +210,8 @@ hi! link jsParens OuterSunset_fg_2
 hi! link jsFunctionKey OuterSunset_green_0
 hi! link jsFuncParens OuterSunset_green_0
 hi! link jsFuncBraces OuterSunset_green_0
+hi! link jsCommentTodo OuterSunset_yellow_0_bold
+" call s:h('jsCommentTodo', {'bg': s:colors.yellow[1]})
 " hi! link jsFuncCall OuterSunset_green_0
 " hi! link jsObjectBraces OuterSunset_orange_0
 
