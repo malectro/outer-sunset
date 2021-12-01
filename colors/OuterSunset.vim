@@ -194,15 +194,60 @@ hi! link Structure OuterSunset_green_0
 " typedef
 hi! link Typedef OuterSunset_yellow_0
 
+" GUI
+call s:h('ErrorHighlight', {'gui': 'undercurl', 'sp': s:colors.red[0]})
+call s:h('WarningHighlight', {'gui': 'undercurl', 'sp': s:colors.yellow[0]})
+call s:h('InfoHighlight', {'gui': 'undercurl', 'sp': s:colors.blue[0]})
+call s:h('HintHighlight', {'gui': 'undercurl', 'sp': s:colors.green[0]})
+
+hi! link ErrorSign OuterSunset_red_0_sign
+hi! link WarningSign OuterSunset_yellow_0_sign
+hi! link InfoSign OuterSunset_blue_0_sign
 
 " ALE
-call s:h('ALEError', {'gui': 'undercurl', 'sp': s:colors.red[0]})
-call s:h('ALEWarning', {'gui': 'undercurl', 'sp': s:colors.yellow[0]})
-call s:h('ALEInfo', {'gui': 'undercurl', 'sp': s:colors.blue[0]})
+hi! link ALEError ErrorHighlight
+hi! link ALEWarning WarningHighlight
+hi! link ALEInfo InfoHighlight
+" call s:h('ALEError', {'gui': 'undercurl', 'sp': s:colors.red[0]})
+" call s:h('ALEWarning', {'gui': 'undercurl', 'sp': s:colors.yellow[0]})
+" call s:h('ALEInfo', {'gui': 'undercurl', 'sp': s:colors.blue[0]})
 
-hi! link ALEErrorSign OuterSunset_red_0_sign
-hi! link ALEWarningSign OuterSunset_yellow_0_sign
-hi! link ALEInfoSign OuterSunset_blue_0_sign
+" hi! link ALEErrorSign OuterSunset_red_0_sign
+" hi! link ALEWarningSign OuterSunset_yellow_0_sign
+" hi! link ALEInfoSign OuterSunset_blue_0_sign
+hi! link ALEErrorSign ErrorSign
+hi! link ALEWarningSign WarningSign
+hi! link ALEInfoSign InfoSign
+
+
+" CoC
+hi! link CocErrorSign ErrorSign
+hi! link CocWarningSign WarningSign
+hi! link CocInfoSign InfoSign
+hi! link CocHintSign OuterSunset_green_0_sign
+hi! link CocErrorFloat OuterSunset_red_0
+hi! link CocWarningFloat OuterSunset_yellow_0
+hi! link CocInfoFloat OuterSunset_blue_0
+hi! link CocHintFloat OuterSunset_green_0
+call s:h('CocFloating', {'bg': s:colors.bg[1]})
+hi! link CocDiagnosticsError OuterSunset_red_0
+hi! link CocDiagnosticsWarning OuterSunset_yellow_0
+hi! link CocDiagnosticsInfo OuterSunset_blue_0
+hi! link CocDiagnosticsHint OuterSunset_green_0
+
+hi! link CocSelectedText OuterSunset_red_0
+hi! link CocCodeLens OuterSunset_bg_1
+
+hi! link CocErrorHighlight ErrorHighlight
+hi! link CocWarningHighlight WarningHighlight
+hi! link CocInfoHighlight InfoHighlight
+hi! link CocHintHighlight HintHighlight
+
+" call s:HL('CocErrorHighlight', s:none, s:none, s:undercurl, s:red)
+" call s:HL('CocWarningHighlight', s:none, s:none, s:undercurl, s:orange)
+" call s:HL('CocInfoHighlight', s:none, s:none, s:undercurl, s:yellow)
+" call s:HL('CocHintHighlight', s:none, s:none, s:undercurl, s:blue)
+
 
 " JavaScript
 hi! link jsBraces OuterSunset_fg_1
@@ -228,6 +273,7 @@ hi! link typeScriptLogicSymbols OuterSunset_fg_1
 hi! link typeScriptDocSeeTag Comment
 hi! link typeScriptDocParam Comment
 hi! link typeScriptDocTags vimCommentTitle
+hi! link typeScriptCommentTodo vimCommentTitle
 hi! link typeScriptGlobalObjects OuterSunset_fg_1
 hi! link typeScriptParens OuterSunset_fg_2
 hi! link typeScriptOpSymbols OuterSunset_fg_2
