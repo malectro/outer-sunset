@@ -132,6 +132,11 @@ call s:h('StatusLine', {'fg': s:colors.bg[0], 'bg': s:colors.fg[0], 'gui': 'inve
 call s:h('StatusLineNC', {'fg': s:colors.bg[0], 'bg': s:colors.fg[2], 'gui': 'inverse'})
 " Search
 hi! link Search OuterSunset_yellow_1_sign
+" Popup Menu
+call s:h("Pmenu", { "fg": s:colors.fg[0], "bg": s:colors.bg[1] }) " Popup menu: normal item.
+" call s:h("PmenuSel", { "fg": s:cursor_grey, "bg": s:blue }) " Popup menu: selected item.
+" call s:h("PmenuSbar", { "bg": s:cursor_grey }) " Popup menu: scrollbar.
+" call s:h("PmenuThumb", { "bg": s:white }) " Popup menu: Thumb of the scrollbar.
 
 " Comment
 hi! link Comment OuterSunset_fg_2
