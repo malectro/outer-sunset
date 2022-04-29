@@ -143,7 +143,7 @@ hi! link Comment OuterSunset_fg_2
 
 " KEYWORDS
 " Generic statement
-hi! link Statement OuterSunset_Important
+hi! link Statement OuterSunset_fg_0
 " if, then, else, endif, swicth, etc.
 hi! link Conditional OuterSunset_Important
 " for, do, while, etc.
@@ -286,3 +286,12 @@ hi! link typeScriptHtmlElemProperties OuterSunset_fg_2
 hi! link typeScriptNull OuterSunset_Value
 hi! link typeScriptInterpolationDelimiter OuterSunset_rose
 
+" Treesitter
+hi! link TSVariable OuterSunset_fg_0
+hi! link TSConstructor OuterSunset_green_0
+hi! link TSTag OuterSunset_fg_0
+hi! link TSTagDelimiter OuterSunset_fg_1
+hi! link TSPunctBracket OuterSunset_fg_2
+
+" TreesitterTSX
+" hi! link 
