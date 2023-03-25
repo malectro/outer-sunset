@@ -287,14 +287,13 @@ hi! link typeScriptNull OuterSunset_Value
 hi! link typeScriptInterpolationDelimiter OuterSunset_rose
 
 " Treesitter
-hi! link @keyword OuterSunset_rose_0
-hi! link @punctuation OuterSunset_fg_2
-hi! link @punctuation.bracket OuterSunset_fg_2
-hi! link @variable OuterSunset_fg_0
-hi! link @string OuterSunset_yellow_0
-hi! link @constructor OuterSunset_green_0
-hi! link @tag OuterSunset_fg_0
-hi! link @tag.delimiter OuterSunset_fg_1
-
-" TreesitterTSX
-" hi! link 
+if has('nvim')
+  hi! link @keyword OuterSunset_rose_0
+  hi! link @punctuation OuterSunset_fg_2
+  hi! link @punctuation.bracket OuterSunset_fg_2
+  hi! link @variable OuterSunset_fg_0
+  hi! link @string OuterSunset_yellow_0
+  hi! link @constructor OuterSunset_green_0
+  hi! link @tag OuterSunset_fg_0
+  hi! link @tag.delimiter OuterSunset_fg_1
+endif
