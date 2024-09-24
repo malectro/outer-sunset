@@ -99,7 +99,8 @@ for [name, colors] in items(s:colors)
 endfor
 
 " local generalizations
-hi! link OuterSunset_Important OuterSunset_red_0
+hi! link OuterSunset_Error OuterSunset_red_0
+hi! link OuterSunset_Important OuterSunset_pink_0
 hi! link OuterSunset_Macro OuterSunset_rose_0
 hi! link OuterSunset_Value OuterSunset_purple_0
 
@@ -144,14 +145,14 @@ hi! link Comment OuterSunset_fg_2
 " KEYWORDS
 " Generic statement
 hi! link Statement OuterSunset_fg_0
-" if, then, else, endif, swicth, etc.
+" if, then, else, endif, switch, etc.
 hi! link Conditional OuterSunset_Important
 " for, do, while, etc.
 hi! link Repeat OuterSunset_Important
 " case, default, etc.
 hi! link Label OuterSunset_Important
 " try, catch, throw
-hi! link Exception OuterSunset_Important
+hi! link Exception OuterSunset_Error
 " sizeof, "+", "*", etc.
 hi! link Operator Normal
 " Any other keyword
@@ -208,6 +209,12 @@ call s:h('HintHighlight', {'gui': 'undercurl', 'sp': s:colors.green[0]})
 hi! link ErrorSign OuterSunset_red_0_sign
 hi! link WarningSign OuterSunset_yellow_0_sign
 hi! link InfoSign OuterSunset_blue_0_sign
+
+hi! link DiagnosticError OuterSunset_Error
+hi! link DiagnosticWarn OuterSunset_yellow_0
+hi! link DiagnosticInfo OuterSunset_blue_0
+hi! link DiagnosticHint OuterSunset_fg_1
+hi! link DiagnosticOk OuterSunset_green_0
 
 " ALE
 hi! link ALEError ErrorHighlight
@@ -286,14 +293,31 @@ hi! link typeScriptHtmlElemProperties OuterSunset_fg_2
 hi! link typeScriptNull OuterSunset_Value
 hi! link typeScriptInterpolationDelimiter OuterSunset_rose
 
-" Treesitter
+"" Treesitter
 if has('nvim')
+  " variables fg
+  " puncuation fg_1
+  " comments fg_1
+  " keywords rose
+  " errors red
+  " functions green
+  " objects blue
+  " types pink
+  " strings yellow
   hi! link @keyword OuterSunset_rose_0
+  hi! link @keyword.function OuterSunset_green_0_italic
   hi! link @punctuation OuterSunset_fg_2
   hi! link @punctuation.bracket OuterSunset_fg_2
+  hi! link @conditional OuterSunset_rose_0
   hi! link @variable OuterSunset_fg_0
   hi! link @string OuterSunset_yellow_0
-  hi! link @constructor OuterSunset_green_0
-  hi! link @tag OuterSunset_fg_0
+  hi! link @tag OuterSunset_green_0
   hi! link @tag.delimiter OuterSunset_fg_1
+  hi! link @tag.attribute OuterSunset_orange_0
+  hi! link @type OuterSunset_pink_0
+  hi! link @constructor OuterSunset_green_0
+
+
+  """ LSP Semantic Tokens
+  hi! link @lsp.type.class OuterSunset_green_0
 endif
