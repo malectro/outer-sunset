@@ -1,4 +1,4 @@
-import colors from './cterm-colors.json';
+import colors from './cterm-colors.json' with {type: 'json'};
 
 export default function quantizeColor(color) {
   let bestMatch;

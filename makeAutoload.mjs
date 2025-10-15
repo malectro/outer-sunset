@@ -1,6 +1,6 @@
 import {promises as fs} from 'fs';
 
-import colors from './colors.json';
+import colors from './colors.json' with {type: 'json'};
 import quantizeColor from './quantizeColor.mjs';
 
 
@@ -16,7 +16,7 @@ async function main() {
 `
 let s:colors = ${JSON.stringify(vimColors)}
 
-function! OuterSunset#GetColors()
+function! outersunset#GetColors()
   return s:colors
 endfunction
 `
